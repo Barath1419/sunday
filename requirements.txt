@@ -1,5 +1,5 @@
 flask
-jwt
+pyjwt
 mysql-connector-python
 requests
 email_validator
