@@ -3,3 +3,4 @@ jwt
 mysql-connector-python
 requests
 email_validator
+waitress
