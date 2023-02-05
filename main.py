@@ -1,15 +1,17 @@
-import routes
+
 from flask import Flask , request , jsonify
 from functools import wraps
 import jwt
 
 
 app = Flask(__name__)
+app.app_context().push()
 app.config['JSON_SORT_KEYS'] = False
 app.config['ADMIN_SECRET_KEY'] = 'i am an admin'
 app.config['PARTNER_SECRET_KEY'] = 'i am a partner'
 app.config['USER_SECRET_KEY'] = 'i am a user'
 
+import routes
 
 def admin_token_required(f):
     @wraps(f)
@@ -151,6 +153,6 @@ def user_delete():
     return routes.user_delete()
 
 if __name__=="__main__":
-   app.run(port = 8000)
+   app.run()
 
 
