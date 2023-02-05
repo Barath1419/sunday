@@ -1,0 +1,6 @@
+flask
+functools
+jwt
+mysql
+requests
+email_validator
