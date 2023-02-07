@@ -26,6 +26,7 @@ def admin_login():
     if request.method == 'GET':
         id = request.form['id']
         password = request.form['password']
+        data_base.reconnect()
         cursor = data_base.cursor(dictionary=True , buffered=True)
         cursor.execute(f"SELECT * FROM bookmyshow.admins WHERE id = {id}")
         data_fetched = cursor.fetchone()
@@ -96,6 +97,7 @@ def theater_owner_login():
     if request.method == 'GET':
         theater_id = request.form['id']
         password = request.form['password']
+        data_base.reconnect()
         cursor = data_base.cursor(dictionary=True)
         cursor.execute(f"SELECT theaterid , password , ownername FROM bookmyshow.theaterowners WHERE theaterid = {theater_id}")
         theater_details = cursor.fetchone()
@@ -276,6 +278,7 @@ def user_login():
     if request.method == 'GET':
         id = request.form['id']
         password = request.form['password']
+        data_base.reconnect()
         cursor = data_base.cursor(dictionary=True)
         cursor.execute(f"SELECT * FROM bookmyshow.users WHERE userid = {id}")
         data_fetched = cursor.fetchone()
