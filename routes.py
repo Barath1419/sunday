@@ -46,6 +46,10 @@ def admin_login():
                 "code" : "901" , 
                 "message" : "invalid id or password" ,
                 "data" : None})
+    return({"status" : "error" , 
+                "code" : "901" , 
+                "message" : "invalid id or password" ,
+                "data" : None})
 
 def get_users():
     if request.method == 'GET':       
