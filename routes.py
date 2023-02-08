@@ -5,7 +5,7 @@ import requests
 import jwt
 from main import app
 import email_validator
-
+import numpy
 
 data_base = server.credentials.data_base
 
