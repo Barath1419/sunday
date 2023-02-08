@@ -272,7 +272,6 @@ def theater_owner_registration():
                     "data":None})
 
 
-
 def user_login():
     if request.method == 'GET':
         id = request.form['id']
@@ -322,7 +321,6 @@ def user_registration():
                     "code" : "902" , 
                     "message" : "user already added" ,
                     "data":None})
-    
 
 def user_delete():
     if request.method == 'DELETE':
