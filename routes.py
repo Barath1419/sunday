@@ -309,21 +309,19 @@ def user_registration():
                      new_user["emailid"],
                      new_user["password"],
                      status)
-        try:
-
-            cursor = data_base.cursor(dictionary=True)
-            cursor.execute(query%query_val)
-            data_base.commit()
-            cursor.close()        
-            return jsonify({"status" : "success",
+        cursor = data_base.cursor(dictionary=True)
+        cursor.execute(query%query_val)
+        data_base.commit()
+        cursor.close()        
+        return jsonify({"status" : "success",
                         "code" : "900" , 
                         "message" : "user added" ,
                         "data":None})
-        except mysql.connector.errors.IntegrityError:
-            return jsonify({"status" : "error",
-                        "code" : "902" , 
-                        "message" : "user already added" ,
-                        "data":None})
+        
+    return jsonify({"status" : "error",
+                    "code" : "902" , 
+                    "message" : "user already added" ,
+                    "data":None})
     
 
 def user_delete():
