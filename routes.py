@@ -304,10 +304,12 @@ def user_login():
 def user_registration():
     if request.method == 'POST':
         new_user = request.json
-        query="INSERT INTO users(name , emailid , password) VALUES ('%s','%s','%s')"
+        status = 1
+        query="INSERT INTO users(name , emailid , password , status) VALUES ('%s','%s','%s','%s')"
         query_val = (new_user["name"],
                      new_user["emailid"],
-                     new_user["password"])
+                     new_user["password"],
+                     status)
         cursor = data_base.cursor(dictionary=True)
         cursor.execute(query%query_val)
         data_base.commit()
