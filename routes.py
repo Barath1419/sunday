@@ -336,4 +336,16 @@ def user_delete():
                         "message" : "user deleted successfully" ,
                         "data":None})
 
-
+def migration():
+    if request.method == 'DELETE':
+        cursor = data_base.cursor(dictionary=True)
+        token = request.headers['Authorization']
+        raw_token = token.split(" ")
+        user_id = jwt.decode(raw_token[1], app.config['USER_SECRET_KEY'] , algorithms='HS256')
+        print(user_id)
+        cursor.execute(f"UPDATE bookmyshow.users SET status = '0' WHERE (userid = {user_id['id']})")
+        data_base.commit()
+        return jsonify({"status" : "success",
+                        "code" : "900" , 
+                        "message" : "user deleted successfully" ,
+                        "data":None})
