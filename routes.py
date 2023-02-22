@@ -22,9 +22,10 @@ def seats(row , column):
     return total_seats
 
 def admin_login():
-    if request.method == 'GET':
-        id = request.form['id']
-        password = request.form['password']
+    if request.method == 'POST':
+        credentials = request.json
+        id = credentials['id']
+        password = credentials['password']
         data_base.reconnect()
         cursor = data_base.cursor(dictionary=True , buffered=True)
         cursor.execute(f"SELECT * FROM bookmyshow.admins WHERE id = {id}")
@@ -93,9 +94,10 @@ def delete_theater(id):
 
 
 def theater_owner_login():
-    if request.method == 'GET':
-        theater_id = request.form['id']
-        password = request.form['password']
+    if request.method == 'POST':
+        credentials = request.json
+        theater_id = credentials['id']
+        password = credentials['password']
         data_base.reconnect()
         cursor = data_base.cursor(dictionary=True)
         cursor.execute(f"SELECT theaterid , password , ownername FROM bookmyshow.theaterowners WHERE theaterid = {theater_id}")
@@ -273,9 +275,10 @@ def theater_owner_registration():
 
 
 def user_login():
-    if request.method == 'GET':
-        id = request.form['id']
-        password = request.form['password']
+    if request.method == 'POST':
+        credentials = request.json
+        id = credentials['id']
+        password = credentials['password']
         data_base.reconnect()
         cursor = data_base.cursor(dictionary=True)
         cursor.execute(f"SELECT * FROM bookmyshow.users WHERE userid = {id}")

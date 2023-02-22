@@ -79,7 +79,7 @@ def user_token_required(f):
         return f( *args, **kwargs)
     return decorated
 
-@app.route('/admin/login' , methods = ['GET'])
+@app.route('/admin/login' , methods = ['POST'])
 def admin_login():
     return routes.admin_login()
 
@@ -105,7 +105,7 @@ def delete_theater(theaterid):
 
 
 
-@app.route('/theaterowner/login' , methods = ['GET'])
+@app.route('/theaterowner/login' , methods = ['POST'])
 def theate_rowner_login():
     return routes.theater_owner_login()
 
@@ -139,7 +139,7 @@ def theater_delete():
     return routes.theater_delete()
 
 
-@app.route('/user/login' , methods = ['GET'])
+@app.route('/user/login' , methods = ['POST'])
 def user_login():
     return routes.user_login()
 
